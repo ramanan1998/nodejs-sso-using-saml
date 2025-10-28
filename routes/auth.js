@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const Saml2js = require('saml2js');
+const jwt = require("jsonwebtoken");
 
 
 // Home page
@@ -27,7 +28,14 @@ router.post('/auth/saml/callback',
     console.log('=== POST-SAML SESSION ===');
     console.log('User:', req.user);  // Passport.js user object
     console.log('Session:', req.session);
-    res.redirect('https://bejewelled-concha-11b25b.netlify.app/');
+    
+    const token = jwt.sign(
+      { user: req.user },
+      process.env.JWT_SECRET,
+      { expiresIn: '5m' }
+    );
+
+    res.redirect(`https://bejewelled-concha-11b25b.netlify.app/success?token=${token}`);
   }
 );
 
