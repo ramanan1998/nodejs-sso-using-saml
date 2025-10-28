@@ -27,7 +27,7 @@ router.post('/auth/saml/callback',
     console.log('=== POST-SAML SESSION ===');
     console.log('User:', req.user);  // Passport.js user object
     console.log('Session:', req.session);
-    res.redirect('/');
+    res.redirect('https://bejewelled-concha-11b25b.netlify.app/');
   }
 );
 
