@@ -35,7 +35,7 @@ router.post('/auth/saml/callback',
       { expiresIn: '5m' }
     );
 
-    res.redirect(`https://bejewelled-concha-11b25b.netlify.app/success?token=${token}`);
+    res.redirect(`https://bejewelled-concha-11b25b.netlify.app?token=${token}`);
   }
 );
 
