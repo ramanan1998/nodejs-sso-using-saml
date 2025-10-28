@@ -7,7 +7,7 @@ const Saml2js = require('saml2js');
 // Home page
 router.get('/', (req, res) => {
   console.log('Rendering index.ejs', req.user);
-  res.redirect("/login")
+  res.render('index', { user: req.user });
 });
 
 // Login page
